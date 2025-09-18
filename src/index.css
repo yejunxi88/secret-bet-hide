@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* STADIUM BETTING DESIGN SYSTEM - All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL. Dark stadium atmosphere with neon accents.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Stadium Dark Theme */
+    --background: 225 25% 3%;
+    --foreground: 200 15% 92%;
+
+    --card: 225 20% 6%;
+    --card-foreground: 200 15% 92%;
+
+    --popover: 225 20% 6%;
+    --popover-foreground: 200 15% 92%;
+
+    /* Neon Electric Primary */
+    --primary: 190 95% 55%;
+    --primary-foreground: 225 25% 3%;
+
+    /* Stadium Secondary */
+    --secondary: 225 20% 12%;
+    --secondary-foreground: 200 15% 92%;
+
+    --muted: 225 15% 8%;
+    --muted-foreground: 200 10% 65%;
+
+    /* Neon Green Accent */
+    --accent: 150 100% 55%;
+    --accent-foreground: 225 25% 3%;
+
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 200 15% 92%;
+
+    --border: 225 15% 15%;
+    --input: 225 15% 12%;
+    --ring: 190 95% 55%;
+
+    --radius: 0.75rem;
+
+    /* Stadium Lighting Colors */
+    --neon-blue: 190 95% 55%;
+    --neon-green: 150 100% 55%;
+    --neon-pink: 320 85% 60%;
+    --stadium-glow: 200 50% 35%;
+    
+    /* Custom Gradients */
+    --gradient-stadium: linear-gradient(135deg, hsl(225 25% 3%) 0%, hsl(225 20% 6%) 50%, hsl(225 15% 8%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(190 95% 55%) 0%, hsl(150 100% 55%) 100%);
+    --gradient-bet-slip: linear-gradient(145deg, hsl(225 20% 6%) 0%, hsl(225 15% 10%) 100%);
+    
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(190 95% 55% / 0.5);
+    --shadow-bet-slip: 0 8px 32px hsl(225 25% 3% / 0.8);
+    --glow-accent: 0 0 30px hsl(150 100% 55% / 0.3);
+
+    --sidebar-background: 225 20% 6%;
+    --sidebar-foreground: 200 15% 92%;
+    --sidebar-primary: 190 95% 55%;
+    --sidebar-primary-foreground: 225 25% 3%;
+    --sidebar-accent: 225 15% 12%;
+    --sidebar-accent-foreground: 200 15% 92%;
+    --sidebar-border: 225 15% 15%;
+    --sidebar-ring: 190 95% 55%;
+  }
+
+  .dark {
+    /* Keep same values as root since we're always dark */
+    --background: 225 25% 3%;
+    --foreground: 200 15% 92%;
+    --card: 225 20% 6%;
+    --card-foreground: 200 15% 92%;
+    --popover: 225 20% 6%;
+    --popover-foreground: 200 15% 92%;
+    --primary: 190 95% 55%;
+    --primary-foreground: 225 25% 3%;
+    --secondary: 225 20% 12%;
+    --secondary-foreground: 200 15% 92%;
+    --muted: 225 15% 8%;
+    --muted-foreground: 200 10% 65%;
+    --accent: 150 100% 55%;
+    --accent-foreground: 225 25% 3%;
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 200 15% 92%;
+    --border: 225 15% 15%;
+    --input: 225 15% 12%;
+    --ring: 190 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background-image: var(--gradient-stadium);
+    background-attachment: fixed;
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', monospace;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Stadium Lighting Effects */
+@layer utilities {
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+  
+  .bet-slip-shadow {
+    box-shadow: var(--shadow-bet-slip);
+  }
+  
+  .accent-glow {
+    box-shadow: var(--glow-accent);
+  }
+  
+  .gradient-stadium {
+    background: var(--gradient-stadium);
+  }
+  
+  .gradient-neon {
+    background: var(--gradient-neon);
+  }
+  
+  .gradient-bet-slip {
+    background: var(--gradient-bet-slip);
+  }
+  
+  .text-neon-blue {
+    color: hsl(var(--neon-blue));
+  }
+  
+  .text-neon-green {
+    color: hsl(var(--neon-green));
+  }
+  
+  .text-neon-pink {
+    color: hsl(var(--neon-pink));
+  }
+  
+  .animate-pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-neon {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px hsl(var(--neon-blue) / 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 40px hsl(var(--neon-blue) / 0.8);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px hsl(var(--accent) / 0.8), 0 0 30px hsl(var(--accent) / 0.6);
+  }
+}
